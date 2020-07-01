@@ -1,0 +1,6 @@
+name: ${project.artifactId}
+author: PseudoResonance
+main: io.github.pseudoresonance.infinitymendingunnerf.Unnerf
+version: ${revision}
+description: Lets bows have infinity and mending together
+api-version: 1.13
