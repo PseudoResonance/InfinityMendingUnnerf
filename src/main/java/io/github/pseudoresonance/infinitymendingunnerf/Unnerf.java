@@ -8,6 +8,7 @@ import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
 import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -96,7 +97,7 @@ public class Unnerf extends JavaPlugin {
 	
 	private void initializeMetrics() {
 		metrics = new Metrics(this, 8021);
-		metrics.addCustomChart(new Metrics.SimplePie("java_type", () -> {
+		metrics.addCustomChart(new SimplePie("java_type", () -> {
 			return ToolProvider.getSystemJavaCompiler() == null ? "JRE" : "JDK";
 	    }));
 	}

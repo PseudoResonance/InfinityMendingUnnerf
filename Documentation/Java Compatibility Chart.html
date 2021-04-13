@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+tr:first-child th {
+border-top:none;
+}
+tr:nth-child(2) td {
+border-top:none;
+}
+tr:last-child td {
+border-bottom:none;
+}
+tr td:first-child, tr th:first-child {
+border-left:none;
+}
+tr td:last-child, tr th:last-child {
+border-right:none;
+}
+th.header {
+background-color:#E4E5E6;
+border-color:#B0B1B4;
+}
+table,th,td {
+border-collapse:collapse;
+}
+th, td.left {
+background-color:#F6F6F7;
+color:#696969;
+font-family:calibri light;
+font-weight:bold;
+font-size:200%;
+}
+th,td {
+border:1px solid #E4E5E6;
+padding:4px 8px;
+text-align:center;
+vertical-align:center;
+}
+td {
+font-family:calibri;
+font-size:200%;
+}
+.incompatible {
+background-color:#F26254;
+}
+.compatible {
+background-color:#FCF757;
+}
+.supported {
+background-color:#4FBC89;
+}
+</style>
+</head>
+<body>
+<table>
+<tr>
+<th colspan="4" class="header">Java Compatibility</th>
+</tr>
+<tr>
+<th class="empty"></th>
+<th>Java 8 and Older</th>
+<th>Java 9/10</th>
+<th>Java 11 and Newer</th>
+</tr>
+<tr>
+<td class="left">JRE</td>
+<td class="incompatible">Unsupported<br />Incompatible</td>
+<td class="compatible">Unsupported<br />Compatible</td>
+<td class="supported">Supported</td>
+</tr>
+<tr>
+<td class="left">JDK</td>
+<td class="compatible">Unsupported<br />Compatible</td>
+<td class="compatible">Unsupported<br />Compatible</td>
+<td class="supported">Supported</td>
+</tr>
+</table>
+</body>
+</html>
