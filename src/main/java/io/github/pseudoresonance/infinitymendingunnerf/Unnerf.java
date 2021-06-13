@@ -79,8 +79,15 @@ public class Unnerf extends JavaPlugin {
 			ByteBuddyAgent.install();
 			try {
 				logger.info("Injector loaded! Beginning injection of custom mending/infinity code!");
-				Class<?> enchantmentInfiniteArrowsClass = Class.forName("net.minecraft.server." + bukkitVersion + ".EnchantmentInfiniteArrows");
-				Class<?> enchantmentClass = Class.forName("net.minecraft.server." + bukkitVersion + ".Enchantment");
+				Class<?> enchantmentInfiniteArrowsClass;
+				Class<?> enchantmentClass;
+				if (ver >= 17) {
+					enchantmentInfiniteArrowsClass = Class.forName("net.minecraft.world.item.enchantment.EnchantmentInfiniteArrows");
+					enchantmentClass = Class.forName("net.minecraft.world.item.enchantment.Enchantment");
+				} else {
+					enchantmentInfiniteArrowsClass = Class.forName("net.minecraft.server." + bukkitVersion + ".EnchantmentInfiniteArrows");
+					enchantmentClass = Class.forName("net.minecraft.server." + bukkitVersion + ".Enchantment");
+				}
 				logger.info("Found necessary classes!");
 				new ByteBuddy().redefine(enchantmentInfiniteArrowsClass).method(ElementMatchers.takesArguments(enchantmentClass)).intercept(SuperMethodCall.INSTANCE).make().load(enchantmentInfiniteArrowsClass.getClassLoader(), ClassReloadingStrategy.fromInstalledAgent());
 				logger.info("Injection complete! Infinity and mending are no longer exclusive!");
