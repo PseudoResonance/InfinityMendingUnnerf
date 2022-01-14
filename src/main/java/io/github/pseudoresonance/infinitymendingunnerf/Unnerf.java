@@ -39,7 +39,14 @@ public class Unnerf extends JavaPlugin {
 			}
 			if (ver >= 11) {
 				logger.info("Minecraft 1.11 or later.");
-				if ("9".compareTo(System.getProperty("java.version")) >= 0) {
+				float javaVersion;
+				try {
+					javaVersion = Float.parseFloat(System.getProperty("java.class.version"));
+				} catch (NumberFormatException e) {
+					javaVersion = 0;
+				}
+				logger.info("Java: " + javaVersion);
+				if (javaVersion <= 52) {
 					logger.info("Running Java 8 or older!");
 					JavaCompiler c = ToolProvider.getSystemJavaCompiler();
 					if (c == null) {
@@ -77,6 +84,8 @@ public class Unnerf extends JavaPlugin {
 					} else {
 						logger.info("Running JDK! Proceeding...");
 					}
+				} else {
+					logger.info("Running Java 9 or newer!");
 				}
 				logger.info("Loading injector!");
 				ByteBuddyAgent.install();
